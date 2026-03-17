@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(256 208) rotate(90) scale(144 144)">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.92" />
+      <stop offset="0.28" stop-color="#f4f5f7" stop-opacity="0.44" />
+      <stop offset="0.62" stop-color="#d7dae0" stop-opacity="0.16" />
+      <stop offset="1" stop-color="#c7cbd2" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="plateTopFill" x1="256" y1="122" x2="256" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9fafb" />
+      <stop offset="0.22" stop-color="#eef0f2" />
+      <stop offset="0.7" stop-color="#cfd4dc" />
+      <stop offset="1" stop-color="#a0a7b1" />
+    </linearGradient>
+    <linearGradient id="plateMidFill" x1="256" y1="190" x2="256" y2="314" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#edf0f3" />
+      <stop offset="0.24" stop-color="#dee2e8" />
+      <stop offset="0.72" stop-color="#bcc2cb" />
+      <stop offset="1" stop-color="#8b929d" />
+    </linearGradient>
+    <linearGradient id="plateLowFill" x1="256" y1="252" x2="256" y2="382" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9dde3" />
+      <stop offset="0.28" stop-color="#c8cdd4" />
+      <stop offset="0.76" stop-color="#9ea5af" />
+      <stop offset="1" stop-color="#767d88" />
+    </linearGradient>
+    <linearGradient id="outerStroke" x1="164" y1="148" x2="352" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="0.36" stop-color="#d7dce4" stop-opacity="0.84" />
+      <stop offset="1" stop-color="#4e5561" stop-opacity="0.58" />
+    </linearGradient>
+    <linearGradient id="innerStroke" x1="212" y1="174" x2="302" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.88" />
+      <stop offset="1" stop-color="#9096a0" stop-opacity="0.42" />
+    </linearGradient>
+    <filter id="shadow" x="110" y="114" width="292" height="294" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#090b0f" flood-opacity="0.3" />
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#0b0d10" flood-opacity="0.2" />
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="206" r="132" fill="url(#halo)" />
+
+  <g filter="url(#shadow)">
+    <g transform="translate(256 310) rotate(-30) scale(1 0.72)">
+      <rect x="-102" y="-102" width="204" height="204" rx="28" fill="url(#plateLowFill)" stroke="url(#outerStroke)" stroke-width="6" />
+      <rect x="-93" y="-93" width="186" height="186" rx="22" stroke="#ffffff" stroke-opacity="0.18" stroke-width="2.5" />
+    </g>
+
+    <g transform="translate(256 256) rotate(-30) scale(1 0.72)">
+      <rect x="-92" y="-92" width="184" height="184" rx="26" fill="url(#plateMidFill)" stroke="url(#outerStroke)" stroke-width="6" />
+      <rect x="-83" y="-83" width="166" height="166" rx="20" stroke="#ffffff" stroke-opacity="0.22" stroke-width="2.5" />
+    </g>
+
+    <g transform="translate(256 198) rotate(-30) scale(1 0.72)">
+      <rect x="-102" y="-102" width="204" height="204" rx="28" fill="url(#plateTopFill)" stroke="url(#outerStroke)" stroke-width="6" />
+      <rect x="-93" y="-93" width="186" height="186" rx="22" stroke="#ffffff" stroke-opacity="0.26" stroke-width="2.5" />
+      <rect x="-44" y="-44" width="88" height="88" rx="10" fill="#f3f5f7" fill-opacity="0.24" stroke="url(#innerStroke)" stroke-width="3" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,107 @@
+{
+  "name": "icon-studio",
+  "version": "1.0.0",
+  "description": "Local Windows web app that assigns custom icons to newly created folders.",
+  "private": true,
+  "main": "desktop/main.cjs",
+  "workspaces": [
+    "backend",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev:desktop",
+    "dev:desktop": "concurrently -n web,electron -c cyan,magenta \"npm run dev --workspace web\" \"npm run dev:electron\"",
+    "dev:electron": "wait-on http://localhost:5173 && set \"ICON_STUDIO_RENDERER_URL=http://localhost:5173\" && electron .",
+    "dev:web": "concurrently -n backend,web -c green,cyan \"npm run dev --workspace backend\" \"npm run dev --workspace web\"",
+    "build": "npm run build --workspace web",
+    "build:icon": "node scripts/generate-app-icon.mjs",
+    "dist:win": "npm run dist:win:installer",
+    "dist:win:installer": "npm run build && npm run build:icon && set \"CSC_IDENTITY_AUTO_DISCOVERY=false\" && electron-builder --win nsis --publish never",
+    "dist:win:portable": "npm run build && npm run build:icon && set \"CSC_IDENTITY_AUTO_DISCOVERY=false\" && electron-builder --win portable --publish never",
+    "start": "electron .",
+    "start:backend": "npm run start --workspace backend"
+  },
+  "keywords": [
+    "windows",
+    "folder-icons",
+    "watcher",
+    "webapp"
+  ],
+  "author": "sulf <sulfuredd@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "chokidar": "^5.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "multer": "^2.1.1",
+    "png-to-ico": "^3.0.1",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^37.6.0",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^8.0.5"
+  },
+  "build": {
+    "appId": "com.sulf.iconstudio",
+    "productName": "Icon Studio",
+    "copyright": "Copyright (c) 2026 sulf",
+    "asar": false,
+    "afterPack": "build/afterPack.cjs",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "desktop/**/*",
+      "backend/**/*",
+      "web/dist/**/*",
+      "web/public/app-icon.png",
+      "web/public/tray-icon.png",
+      "web/public/desktop-icon.png",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "executableName": "Icon Studio",
+      "requestedExecutionLevel": "asInvoker",
+      "signAndEditExecutable": false,
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "include": "build/installer.nsh",
+      "artifactName": "Icon-Studio-Setup-${version}.exe",
+      "shortcutName": "Icon Studio",
+      "uninstallDisplayName": "Icon Studio",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "portable": {
+      "artifactName": "Icon-Studio-${version}-Portable.exe"
+    }
+  }
+}

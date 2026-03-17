@@ -1,0 +1,10 @@
+node_modules/
+web/node_modules/
+backend/node_modules/
+web/dist/
+release/
+backend/data/app-state.json
+backend/data/icons/*
+!backend/data/icons/.gitkeep
+backend/temp/*
+!backend/temp/.gitkeep

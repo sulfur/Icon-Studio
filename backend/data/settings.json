@@ -1,0 +1,9 @@
+{
+  "runAtStartup": true,
+  "startMinimized": true,
+  "pollingIntervalSeconds": 5,
+  "reapplyOnStartup": false,
+  "ignoreHiddenItems": false,
+  "theme": "dark",
+  "logRetentionDays": 30
+}
