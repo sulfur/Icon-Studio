@@ -116,6 +116,15 @@ npm run dist:win:portable
 
 Artifacts are written to `release/`.
 
+## Install From GitHub Release
+
+1. Open the [Releases page](https://github.com/sulfur/Icon-Studio/releases).
+2. Download the latest `Icon-Studio-Setup-*.exe` installer from the release assets.
+3. Run the installer and complete the setup wizard.
+4. Launch `Icon Studio` from the Start Menu or desktop shortcut.
+
+If Windows SmartScreen appears, click `More info` and then `Run anyway` for unsigned builds.
+
 ## Windows Notes
 
 - Windows Explorer may take a few seconds to refresh icon cache changes
